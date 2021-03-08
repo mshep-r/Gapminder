@@ -1,0 +1,48 @@
+---
+title: "Gapminder"
+author: "MShep"
+date: "08/03/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+ library(gapminder)
+```
+## Introduction
+In this document, we will be exploring the Gapminder dataset. 
+
+
+## Observations of Gapminder
+
+### Countries with life expectancy less than 30
+
+```{r}
+filter(gapminder,lifeExp<30)
+```
+
+
+We see two countries, Afghanistan and Rwanda.  We see 6 columns (country, continent, year, lifeExp, pop, gdpPercap)
+
+---
+
+### Countries with life expectancy greater than 81
+
+```{r}
+filter(gapminder,lifeExp>81)
+```
+
+We see a couple of countries appear **twice**, *HK* and *Japan*.
+
+---
+
+### Life Expectancy by continent in 2007
+
+
+```{r}
+gapminder2 <- gapminder %>% filter(gapminder$year==2007)
+boxplot(lifeExp~continent,data=gapminder2)
+```
+
+Gosh I **suck** at this! I finally see a plot.  Africa lowest overall, and widest spread.
